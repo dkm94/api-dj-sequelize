@@ -7,40 +7,56 @@ module.exports = {
         type: Sequelize.UUID,
         default: Sequelize.fn('uuid_generate_v4')
       },
-      url_name: {
+      urlName: {
         type: Sequelize.STRING(50),
-        allowNull: false,
-        unique: true
+        allowNull: false
       },
       name: {
         type: Sequelize.STRING(50),
-        allowNull: false,
-        unique: true
+        allowNull: false
       },
       biography: {
         type: Sequelize.STRING(2000),
         allowNull: false
       },
       soundcloud: {
-        type: Sequelize.STRING(1000)
+        type: Sequelize.STRING(1000),
+        allowNull: true
       },
       facebook: {
-        type: Sequelize.STRING(1000)
+        type: Sequelize.STRING(1000),
+        allowNull: true
       },
       instagram: {
-        type: Sequelize.STRING(1000)
+        type: Sequelize.STRING(1000),
+        allowNull: true
       },
       spotify: {
-        type: Sequelize.STRING(1000)
+        type: Sequelize.STRING(1000),
+        allowNull: true
       },
       beatport: {
-        type: Sequelize.STRING(1000)
+        type: Sequelize.STRING(1000),
+        allowNull: true
       },
       mixcloud: {
-        type: Sequelize.STRING(1000)
+        type: Sequelize.STRING(1000),
+        allowNull: true
       },
       youtube: {
-        type: Sequelize.STRING(1000)
+        type: Sequelize.STRING(1000),
+        allowNull: true
+      },
+      clubId: {
+        type: Sequelize.INTEGER,
+        // defaultValue: Sequelize.UUIDV4,
+        allowNull: false,
+        // primaryKey: true,
+        //ahaha
+        references: {
+          model: 'Clubs',
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,
@@ -49,7 +65,7 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      },
+      }
     });
   },
   down: async (queryInterface, Sequelize) => {

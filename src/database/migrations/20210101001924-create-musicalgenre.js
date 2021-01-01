@@ -1,6 +1,6 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Clubs', {
+    await queryInterface.createTable('Musicalgenres', {
       id: {
         allowNull: false,
         primaryKey: true,
@@ -8,19 +8,19 @@ module.exports = {
         default: Sequelize.fn('uuid_generate_v4')
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(50)
       },
-      created_at: {
+      createdAt: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updated_at: {
+      updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
       }
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Clubs');
+    await queryInterface.dropTable('Musicalgenres');
   }
 };
