@@ -10,12 +10,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Musicalgenre.hasOne(models.DjMusicalgenre)
     }
   };
   Musicalgenre.init({
     id:{
       type: DataTypes.INTEGER,
+      autoIncrement: true,
       allowNull: false,
       primaryKey: true,
       // defaultValue: DataTypes.UUIDV4,

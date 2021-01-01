@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
   Club.init({
     id:{
       type: DataTypes.INTEGER,
+      autoIncrement: true,
       allowNull: false,
       primaryKey: true
     },

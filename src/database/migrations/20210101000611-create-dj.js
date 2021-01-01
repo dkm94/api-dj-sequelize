@@ -2,9 +2,10 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Djs', {
       id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
         allowNull: false,
-        primaryKey: true,
-        type: Sequelize.INTEGER
+        primaryKey: true
       },
       urlName: {
         type: Sequelize.STRING(50),
