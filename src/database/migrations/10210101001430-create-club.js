@@ -1,11 +1,10 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Musicalgenres', {
+    await queryInterface.createTable('Clubs', {
       id: {
         allowNull: false,
         primaryKey: true,
-        type: Sequelize.UUID,
-        default: Sequelize.fn('uuid_generate_v4')
+        type: Sequelize.INTEGER
       },
       name: {
         type: Sequelize.STRING(50)
@@ -21,6 +20,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Musicalgenres');
+    await queryInterface.dropTable('Clubs');
   }
 };

@@ -4,8 +4,7 @@ module.exports = {
       id: {
         allowNull: false,
         primaryKey: true,
-        type: Sequelize.UUID,
-        default: Sequelize.fn('uuid_generate_v4')
+        type: Sequelize.INTEGER
       },
       urlName: {
         type: Sequelize.STRING(50),
@@ -49,10 +48,7 @@ module.exports = {
       },
       clubId: {
         type: Sequelize.INTEGER,
-        // defaultValue: Sequelize.UUIDV4,
         allowNull: false,
-        // primaryKey: true,
-        //ahaha
         references: {
           model: 'Clubs',
           key: 'id'

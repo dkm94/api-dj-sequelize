@@ -15,14 +15,10 @@ module.exports = (sequelize, DataTypes) => {
   };
   Musicalgenre.init({
     id:{
-      type: DataTypes.UUID,
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      defaultValue: DataTypes.UUIDV4,
-      validate: {
-        notNull: true,
-        isUUID: 4
-      },
+      // defaultValue: DataTypes.UUIDV4,
     },
     name: DataTypes.STRING
   }, {

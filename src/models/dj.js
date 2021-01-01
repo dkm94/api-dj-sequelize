@@ -18,13 +18,9 @@ module.exports = (sequelize, DataTypes) => {
   };
   Dj.init({
     id:{
-      type: DataTypes.UUID,
+      type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true,
-      validate: {
-        notNull: true,
-        isUUID: 4
-      },
+      primaryKey: true
     },
     url_name: {
       type: DataTypes.STRING,
@@ -115,6 +111,13 @@ module.exports = (sequelize, DataTypes) => {
         len: [10, 100]
       },
     },
+    clubId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Clubs',
+        key: 'id'
+      }
+    }
   }
   , {
     sequelize,

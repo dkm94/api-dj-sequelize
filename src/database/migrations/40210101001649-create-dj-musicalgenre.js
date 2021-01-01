@@ -4,8 +4,7 @@ module.exports = {
       id: {
         allowNull: false,
         primaryKey: true,
-        type: Sequelize.UUID,
-        default: Sequelize.fn('uuid_generate_v4')
+        type: Sequelize.INTEGER
       },
       djId: {
         type: Sequelize.INTEGER,

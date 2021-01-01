@@ -10,26 +10,21 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      DjMusicalgenre.belongsTo(models.Dj, {
-        as: 'dj',
+      models.Dj.hasMany(models.Musicalgenre, {
+        // as: 'djs',
         foreignKey: 'djId'
       })
-      DjMusicalgenre.belongsTo(models.Musicalgenre, {
-        as: 'musicalGenre',
+      models.Musicalgenre.hasMany(models.Dj, {
+        // as: 'musicalGenres',
         foreignKey: 'musicalGenreId'
       })
     }
   };
   DjMusicalgenre.init({
     id:{
-      type: DataTypes.UUID,
+      type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true,
-      defaultValue: DataTypes.UUIDV4,
-      validate: {
-        notNull: true,
-        isUUID: 4
-      },
+      primaryKey: true
     },
     djId: DataTypes.INTEGER,
     musicalGenreId: DataTypes.INTEGER

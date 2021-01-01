@@ -11,22 +11,17 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Club.hasMany(models.Dj, {
-        foreignKey: 'clubId',
-        as: 'dj'
+        // as: 'dj',
+        foreignKey: 'clubId'
       })
 
     }
   };
   Club.init({
     id:{
-      type: DataTypes.UUID,
+      type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true,
-      defaultValue: DataTypes.UUIDV4,
-      validate: {
-        notNull: true,
-        isUUID: 4
-      }
+      primaryKey: true
     },
     name: {
         type: DataTypes.STRING,
