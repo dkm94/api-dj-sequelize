@@ -5,9 +5,9 @@ const { NotFoundError } = require("../helpers/errors");
 
 const djsController = {
   getAllDjs: async () => {
-    const allDjs = await Dj.findAll();
-    console.log(allDjs)
-    return allDjs;
+    const djs = await Dj.findAll();
+    console.log(djs)
+    return djs;
   },
 
   getDj: async (name) => {

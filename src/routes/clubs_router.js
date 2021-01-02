@@ -9,6 +9,7 @@ const {
 
 const router = express.Router();
 
+/* GET http://localhost:8080/api/djs/ */
 router.get("/", async (request, response) => {
   const djs = await getAllClubs();
   response.status(OK).json(djs);

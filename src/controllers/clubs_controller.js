@@ -1,9 +1,9 @@
-// const { Club } = require("../models");
+const { Club } = require("../models");
 
 const clubsController = {
   getAllClubs: async () => {
-    // Your code here
-    return {};
+    const clubs = await Club.findAll();
+    return clubs;
   },
   getClub: async (name) => {
     // Your code here
