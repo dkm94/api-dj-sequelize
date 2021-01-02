@@ -6,12 +6,16 @@ const clubsController = {
     return clubs;
   },
   getClub: async (name) => {
-    // Your code here
-    return {};
+    const club = await Club.findOne({
+      where: {name}
+    });
+    console.log(club)
+    return club;
   },
   addClub: async (data) => {
-    // Your code here
-    return {};
+    const newClub = await Club.create(data)
+    console.log(newClub);
+    return newClub;
   },
 };
 

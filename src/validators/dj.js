@@ -60,7 +60,7 @@ module.exports = (data) => {
   const {
     name,
     biography,
-    musical_genres,
+    musicalGenres,
     soundcloud,
     facebook,
     instagram,
@@ -79,9 +79,9 @@ module.exports = (data) => {
   if (biographyError)
     errors.push({ field: "biography", message: biographyError });
 
-  const musicalGenresError = musicalGenresValidation(musical_genres);
-  if (musicalGenresError)
-    errors.push({ field: "musical_genres", message: musicalGenresError });
+  // const musicalGenresError = musicalGenresValidation(musicalGenres);
+  // if (musicalGenresError)
+  //   errors.push({ field: "musicalGenres", message: musicalGenresError });
 
   if (soundcloud) {
     const soundcloudError = socialNetworkValidation(soundcloud, "Soundcloud");

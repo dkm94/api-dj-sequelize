@@ -37,77 +37,14 @@ module.exports = (sequelize, DataTypes) => {
         len: [3, 50]
       },
     },
-    biography: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notNull: true,
-        len: [500, 2000]
-      },
-    },
-    soundcloud: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        notNull: true,
-        len: [10, 100]
-      },
-    },
-    facebook: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        notNull: true,
-        len: [10, 100]
-      },
-    },
-    instagram: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        notNull: true,
-        len: [10, 100]
-      },
-    },
-    spotify: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        notNull: true,
-        len: [10, 100]
-      },
-    },
-    beatport: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        notNull: true,
-        len: [10, 100]
-      },
-    },
-    mixcloud: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        notNull: true,
-        len: [10, 100]
-      },
-    },
-    youtube: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        notNull: true,
-        len: [10, 100]
-      },
-    },
+    biography: DataTypes.STRING,
+    soundcloud: DataTypes.STRING,
+    facebook: DataTypes.STRING,
+    instagram: DataTypes.STRING,
+    spotify: DataTypes.STRING,
+    beatport: DataTypes.STRING,
+    mixcloud: DataTypes.STRING,
+    youtube: DataTypes.STRING,
     clubId: {
       type: DataTypes.INTEGER,
       references: {

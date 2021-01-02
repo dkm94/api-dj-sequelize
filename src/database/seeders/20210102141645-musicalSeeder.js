@@ -1,4 +1,4 @@
-const Seeds = require('../seeds/20200901155256-musical_genres');
+const Seeds = require('../seeds/20200901155256-musicalGenres');
 module.exports = {
   up: async (queryInterface, Sequelize) => {
      await queryInterface.bulkInsert('Musicalgenres', Seeds, {});

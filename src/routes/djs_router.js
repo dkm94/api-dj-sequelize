@@ -27,7 +27,7 @@ router.post("/", async (request, response) => {
 
   const djToAdd = {
     ...dj,
-    url_name: dj.name.toLowerCase().replace(/ /g, "-"),
+    urlName: dj.name.toLowerCase().replace(/ /g, "-"),
   };
 
   const newDj = await addDj(djToAdd);
@@ -46,7 +46,7 @@ router.put("/:name", async (request, response) => {
 
   const djToUpdate = {
     ...dj,
-    url_name: dj.name.toLowerCase().replace(/ /g, "-"),
+    urlName: dj.name.toLowerCase().replace(/ /g, "-"),
   };
 
   const djUpdated = await updateDj(request.params.name, djToUpdate);

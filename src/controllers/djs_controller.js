@@ -16,8 +16,9 @@ const djsController = {
   },
 
   addDj: async (data) => {
-    // Your code here
-    return {};
+    const newDj = await Dj.create(data);
+    console.log(newDj);
+    return newDj;
   },
 
   updateDj: async (name, data) => {
