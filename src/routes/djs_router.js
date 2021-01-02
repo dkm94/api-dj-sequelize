@@ -13,11 +13,13 @@ const { ValidationError } = require("../helpers/errors");
 
 const router = express.Router();
 
+/* GET http://localhost:8080/api/djs/ */
 router.get("/", async (request, response) => {
   const djs = await getAllDjs();
   response.status(OK).json(djs);
 });
 
+/* POST http://localhost:8080/api/djs/ */
 router.post("/", async (request, response) => {
   const dj = request.body;
   const errors = djValidation(dj);
