@@ -20,32 +20,25 @@ module.exports = {
         allowNull: false
       },
       soundcloud: {
-        type: Sequelize.STRING(1000),
-        allowNull: true
+        type: Sequelize.STRING(1000)
       },
       facebook: {
-        type: Sequelize.STRING(1000),
-        allowNull: true
+        type: Sequelize.STRING(1000)
       },
       instagram: {
-        type: Sequelize.STRING(1000),
-        allowNull: true
+        type: Sequelize.STRING(1000)
       },
       spotify: {
-        type: Sequelize.STRING(1000),
-        allowNull: true
+        type: Sequelize.STRING(1000)
       },
       beatport: {
-        type: Sequelize.STRING(1000),
-        allowNull: true
+        type: Sequelize.STRING(1000)
       },
       mixcloud: {
-        type: Sequelize.STRING(1000),
-        allowNull: true
+        type: Sequelize.STRING(1000)
       },
       youtube: {
-        type: Sequelize.STRING(1000),
-        allowNull: true
+        type: Sequelize.STRING(1000)
       },
       clubId: {
         type: Sequelize.INTEGER,

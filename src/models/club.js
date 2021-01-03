@@ -5,6 +5,7 @@ module.exports = (sequelize, DataTypes) => {
   class Club extends Model {
     static associate(models) {
       Club.hasMany(models.Dj, {
+        allowNull: false,
         foreignKey: 'clubId'
       })
     }
@@ -19,12 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     name: {
         type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-        validate: {
-          notNull: true,
-          len: [10, 100]
-        }
+        allowNull: false
     }
   }, {
     sequelize,

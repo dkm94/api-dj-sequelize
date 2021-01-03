@@ -4,7 +4,10 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Musicalgenre extends Model {
     static associate(models) {
-      Musicalgenre.hasOne(models.DjMusicalgenre)
+      Musicalgenre.belongsToMany(models.Dj, {
+        through: 'DjMusicalgenres',
+        foreignKey: 'musicalGenreId'
+      })
     }
   };
 

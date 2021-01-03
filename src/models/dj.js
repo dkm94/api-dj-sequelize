@@ -6,9 +6,13 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Dj.belongsTo(models.Club,
         {
+          allowNull: false,
           foreignKey: 'clubId'
         })
-      Dj.hasOne(models.DjMusicalgenre)
+      Dj.belongsToMany(models.Musicalgenre, {
+        through: 'DjMusicalgenres',
+        foreignKey: 'djId'
+      })
     }
   };
   
@@ -47,6 +51,7 @@ module.exports = (sequelize, DataTypes) => {
     youtube: DataTypes.STRING,
     clubId: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: 'Clubs',
         key: 'id'

@@ -16,9 +16,23 @@ const djsController = {
   },
 
   addDj: async (data) => {
-    const newDj = await Dj.create(data);
-    console.log(newDj);
-    return newDj;
+    const dj = await Dj.create(data);
+    console.log("genre musicaux ****", data.musicalGenres);
+    const allGenres = await Musicalgenre.findAll();
+    console.log(allGenres);
+    const musical_genres = data.musicalGenres;
+
+    musical_genres.forEach(async (genre) => {
+      console.log("***LOG1******",genre)
+      allGenres.forEach(async (dbGenre) => {
+        console.log("****LOG2****",dbGenre)
+        if (dbGenre.dataValues.name === genre)
+          await dj.addMusicalgenre(dbGenre);
+          console.log("*********OK********")
+      });
+    });
+  
+    return dj;
   },
 
   updateDj: async (name, data) => {

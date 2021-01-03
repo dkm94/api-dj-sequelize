@@ -79,9 +79,9 @@ module.exports = (data) => {
   if (biographyError)
     errors.push({ field: "biography", message: biographyError });
 
-  // const musicalGenresError = musicalGenresValidation(musicalGenres);
-  // if (musicalGenresError)
-  //   errors.push({ field: "musicalGenres", message: musicalGenresError });
+  const musicalGenresError = musicalGenresValidation(musicalGenres);
+  if (musicalGenresError)
+    errors.push({ field: "musicalGenres", message: musicalGenresError });
 
   if (soundcloud) {
     const soundcloudError = socialNetworkValidation(soundcloud, "Soundcloud");

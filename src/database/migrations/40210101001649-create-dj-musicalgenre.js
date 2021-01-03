@@ -1,12 +1,6 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('DjMusicalgenres', {
-      id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
-        allowNull: false,
-        primaryKey: true
-      },
       djId: {
         type: Sequelize.INTEGER,
         allowNull: false,
