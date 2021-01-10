@@ -5,8 +5,10 @@ module.exports = (sequelize, DataTypes) => {
   class Club extends Model {
     static associate(models) {
       Club.hasMany(models.Dj, {
-        allowNull: false,
-        foreignKey: 'clubId'
+        foreignKey: {
+          name: 'clubId',
+          allowNull: false
+        }
       })
     }
   };

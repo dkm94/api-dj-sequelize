@@ -6,12 +6,16 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Dj.belongsTo(models.Club,
         {
-          allowNull: false,
-          foreignKey: 'clubId'
+          foreignKey: {
+            name: 'clubId',
+            allowNull: false
+          }
         })
       Dj.belongsToMany(models.Musicalgenre, {
         through: 'DjMusicalgenres',
-        foreignKey: 'djId'
+        foreignKey: {
+          name: 'djId'
+        }
       })
     }
   };
