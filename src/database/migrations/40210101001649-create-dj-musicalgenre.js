@@ -7,7 +7,8 @@ module.exports = {
         references: {
           model: 'Djs',
           key: 'id'
-        }
+        },
+        onDelete: "cascade"
       },
       musicalGenreId: {
         type: Sequelize.INTEGER,
@@ -15,7 +16,8 @@ module.exports = {
         references: {
           model: 'Musicalgenres',
           key: 'id'
-        }
+        },
+        onDelete: "cascade"
       },
       createdAt: {
         allowNull: false,

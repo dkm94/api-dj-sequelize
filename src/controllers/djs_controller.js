@@ -1,24 +1,54 @@
 const { pick } = require("lodash");
-// const { Dj } = require('../models'); 
-const { Dj, Musicalgenre, DjMusicalgenre } = require("../models");
-const { NotFoundError } = require("../helpers/errors");
+const { Dj, Musicalgenre, DjMusicalgenre, Club } = require("../models");
+const { NotFoundError, BadRequestError } = require("../helpers/errors");
 
 const djsController = {
   getAllDjs: async () => {
-    const djs = await Dj.findAll();
-    console.log(djs)
+    const djs = await Dj.findAll({
+      order: [["name", "ASC"]],
+      attributes: ["name"],
+      include: [{
+        model: Club,
+        attributes: ['name']
+      }]
+    });
+    if(djs.length === 0){
+      throw new NotFoundError("Ressource introuvable.", "La liste des Djs est vide.")
+    }
     return djs;
   },
 
   getDj: async (name) => {
     const dj = await Dj.findOne({
-      where: {name}
+      where: {
+        name: name
+      },
+      include: [{
+        model: Club,
+        attributes: ['name']
+      }],
+      attributes: {
+        exclude: ['createdAt', 'updatedAt', 'clubId']
+      }
     });
+    if(!dj){
+      throw new NotFoundError("Ressource introuvable.", "Le Dj que vous cherchez n'existe pas.")
+    }
     return dj;
   },
 
   addDj: async (data) => {
     //1. Fonction qui créer le nouveau DJ
+    const {name} = data;
+    const djFound = await Dj.findOne({
+      where: {
+        name: name
+      },
+      attributes: ['id', 'name']
+    })
+    if(djFound){
+      throw new BadRequestError('Ressource déjà existante.', 'Ce DJ existe déjà.')
+    }
     const dj = await Dj.create(data);
     console.log("genre musicaux", data.musicalGenres);
     //2. On récupère tous les genres de la DB
@@ -39,23 +69,42 @@ const djsController = {
           await dj.addMusicalgenre(dbGenre);
       });
     });
-  
     return dj;
   },
 
   updateDj: async (name, data) => {
-    const djUpdated = await Dj.update(data,
+    const djFound = await Dj.findOne({
+      where: {
+        name: name
+      }
+    })
+    if(!djFound){
+      throw new NotFoundError("Ressource inexistante.", "Le Dj que vous souhaitez modifier n'existe pas.")
+    }
+    const dj = await Dj.update(data,
     {
-      where: {name}
+      where: {
+        name: name
+      }
     });
-    return djUpdated;
+    return dj;
   },
 
   deleteDj: async (name) => {
-    const deletedDj = Dj.destroy({
-      where: {name}
+    const djFound = await Dj.findOne({
+      where: {
+        name: name
+      }
+    })
+    if(!djFound){
+      throw new NotFoundError("Ressource introuvable.", "Le Dj que vous souhaitez supprimer n'existe pas.")
+    }
+    const dj = await Dj.destroy({
+      where: {
+        name: name
+      }
     });
-    return deletedDj;
+    return dj;
   },
 };
 

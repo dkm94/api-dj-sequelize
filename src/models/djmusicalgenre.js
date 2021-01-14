@@ -20,8 +20,14 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       primaryKey: true
     },
-    djId: DataTypes.INTEGER,
-    musicalGenreId: DataTypes.INTEGER
+    djId: {
+      type: DataTypes.INTEGER,
+      onDelete: 'cascade'
+    },
+    musicalGenreId: {
+      type: DataTypes.INTEGER,
+      onDelete: 'cascade'
+    }
   }, {
     sequelize,
     modelName: 'DjMusicalgenre'

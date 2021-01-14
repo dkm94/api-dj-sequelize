@@ -8,9 +8,13 @@ module.exports = class NotFoundError extends Error {
       Error.captureStackTrace(this, NotFoundError);
     }
 
+    //Throw une nouvelle erreur dans le controleur
     this.name = `NotFoundError`;
+    // Statut de l'erreur "NotFoundError" (dans le fichier des status code)
     this.status = NOT_FOUND;
+    // Premier paramètre message d'erreur
     this.message = message;
+    // Précision sur l'erreur pour l'user
     this.description = description;
   }
 };

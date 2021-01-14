@@ -5,6 +5,7 @@ module.exports = (error, request, response, next) => {
   const { errors } = error;
   let { status, message, description } = error;
 
+  //En cas d'erreur serveur (SERVER_ERROR, statut 500), on paramètre les messages d'erreur.
   if (!status) {
     status = SERVER_ERROR;
     message = "Oups ! Quelque chose ne fonctionne pas !";
